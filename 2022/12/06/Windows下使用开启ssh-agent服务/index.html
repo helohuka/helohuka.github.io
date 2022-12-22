@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="在使用git命令的时候需要使用sshkey,   在*nux下确认安装并开启ssh-agent服务并使用ssh-add命令添加sshpubkey就可以了 1ssh-add -k yourpathofssh&#x2F;yournameofsshkey   在Window10(1809+)下首先使用管理员身份打开PowerShell键入以下命令确保ssh-agent服务自动启动 1Get-Service ssh">
+  <meta name="description" content="在使用git命令的时候需要使用sshkey,  使用 ssh-keygen 命令生成 key 1ssh-keygen -t ed25519 -C &quot;xxxxx@xxxxx.com&quot;    在*nux下确认安装并开启ssh-agent服务并使用ssh-add命令添加sshpubkey就可以了 1ssh-add -k yourpathofssh&#x2F;yournameofsshkey">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git使用ssh-agent服务">
 <meta property="og:url" content="http://example.com/2022/12/06/Windows%E4%B8%8B%E4%BD%BF%E7%94%A8%E5%BC%80%E5%90%AFssh-agent%E6%9C%8D%E5%8A%A1/index.html">
 <meta property="og:site_name" content="Helohuka&#39;s blog">
-<meta property="og:description" content="在使用git命令的时候需要使用sshkey,   在*nux下确认安装并开启ssh-agent服务并使用ssh-add命令添加sshpubkey就可以了 1ssh-add -k yourpathofssh&#x2F;yournameofsshkey   在Window10(1809+)下首先使用管理员身份打开PowerShell键入以下命令确保ssh-agent服务自动启动 1Get-Service ssh">
-<meta property="og:locale" content="en_US">
+<meta property="og:description" content="在使用git命令的时候需要使用sshkey,  使用 ssh-keygen 命令生成 key 1ssh-keygen -t ed25519 -C &quot;xxxxx@xxxxx.com&quot;    在*nux下确认安装并开启ssh-agent服务并使用ssh-add命令添加sshpubkey就可以了 1ssh-add -k yourpathofssh&#x2F;yournameofsshkey">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-12-06T08:51:05.000Z">
-<meta property="article:modified_time" content="2022-12-06T09:37:10.495Z">
+<meta property="article:modified_time" content="2022-12-22T09:46:33.955Z">
 <meta property="article:author" content="Owen">
 <meta property="article:tag" content="git">
 <meta property="article:tag" content="ssh-agent">
@@ -45,7 +45,7 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'en'
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -89,7 +89,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -118,22 +118,22 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
   </ul>
@@ -163,7 +163,7 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/06/Windows%E4%B8%8B%E4%BD%BF%E7%94%A8%E5%BC%80%E5%90%AFssh-agent%E6%9C%8D%E5%8A%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -185,16 +185,22 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              <time title="Created: 2022-12-06 16:51:05 / Modified: 17:37:10" itemprop="dateCreated datePublished" datetime="2022-12-06T16:51:05+08:00">2022-12-06</time>
+              <time title="创建时间：2022-12-06 16:51:05" itemprop="dateCreated datePublished" datetime="2022-12-06T16:51:05+08:00">2022-12-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-22 17:46:33" itemprop="dateModified" datetime="2022-12-22T17:46:33+08:00">2022-12-22</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Devops/" itemprop="url" rel="index"><span itemprop="name">Devops</span></a>
                 </span>
@@ -212,17 +218,19 @@
 
       
         <p>在使用git命令的时候需要使用sshkey, </p>
-<blockquote>
-<p>在*nux下确认安装并开启ssh-agent服务并使用ssh-add命令添加sshpubkey就可以了</p>
+<h1 id="使用-ssh-keygen-命令生成-key"><a href="#使用-ssh-keygen-命令生成-key" class="headerlink" title="使用 ssh-keygen 命令生成 key"></a>使用 ssh-keygen 命令生成 key</h1><blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C &quot;xxxxx@xxxxx.com&quot;  </span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="在-nux下确认安装并开启ssh-agent服务并使用ssh-add命令添加sshpubkey就可以了"><a href="#在-nux下确认安装并开启ssh-agent服务并使用ssh-add命令添加sshpubkey就可以了" class="headerlink" title="在*nux下确认安装并开启ssh-agent服务并使用ssh-add命令添加sshpubkey就可以了"></a>在*nux下确认安装并开启ssh-agent服务并使用ssh-add命令添加sshpubkey就可以了</h1><blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -k yourpathofssh/yournameofsshkey</span><br></pre></td></tr></table></figure>
 </blockquote>
-<blockquote>
-<p>在Window10(1809+)下首先使用管理员身份打开PowerShell键入以下命令确保ssh-agent服务自动启动</p>
+<h1 id="在Window10-1809-下首先使用管理员身份打开PowerShell键入以下命令确保ssh-agent服务自动启动"><a href="#在Window10-1809-下首先使用管理员身份打开PowerShell键入以下命令确保ssh-agent服务自动启动" class="headerlink" title="在Window10(1809+)下首先使用管理员身份打开PowerShell键入以下命令确保ssh-agent服务自动启动"></a>在Window10(1809+)下首先使用管理员身份打开PowerShell键入以下命令确保ssh-agent服务自动启动</h1><blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-Service ssh-agent | Set-Service -StartupType Automatic</span><br></pre></td></tr></table></figure>
 <p>然后在键入以下命令启动ssh-agent</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent</span><br></pre></td></tr></table></figure>
 <p>最后使用ssh-add命令添加sshpubkey就可以了</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -k yourpathofssh/yournameofsshkey</span><br></pre></td></tr></table></figure></blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -k yourpathofssh/yournameofsshkey</span><br></pre></td></tr></table></figure>
+</blockquote>
 
     </div>
 
@@ -247,7 +255,10 @@
     <a href="/2022/12/06/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E6%95%B4%E7%90%86/" rel="prev" title="博客文章整理">
       <i class="fa fa-chevron-left"></i> 博客文章整理
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/12/06/%E4%BB%A3%E7%A0%81%E6%96%87%E6%A1%A3%E7%94%9F%E6%88%90%E6%B5%81%E7%A8%8B/" rel="next" title="代码文档生成流程">
+      代码文档生成流程 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -298,15 +309,16 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-ssh-keygen-%E5%91%BD%E4%BB%A4%E7%94%9F%E6%88%90-key"><span class="nav-number">1.</span> <span class="nav-text">使用 ssh-keygen 命令生成 key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8-nux%E4%B8%8B%E7%A1%AE%E8%AE%A4%E5%AE%89%E8%A3%85%E5%B9%B6%E5%BC%80%E5%90%AFssh-agent%E6%9C%8D%E5%8A%A1%E5%B9%B6%E4%BD%BF%E7%94%A8ssh-add%E5%91%BD%E4%BB%A4%E6%B7%BB%E5%8A%A0sshpubkey%E5%B0%B1%E5%8F%AF%E4%BB%A5%E4%BA%86"><span class="nav-number">2.</span> <span class="nav-text">在*nux下确认安装并开启ssh-agent服务并使用ssh-add命令添加sshpubkey就可以了</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8Window10-1809-%E4%B8%8B%E9%A6%96%E5%85%88%E4%BD%BF%E7%94%A8%E7%AE%A1%E7%90%86%E5%91%98%E8%BA%AB%E4%BB%BD%E6%89%93%E5%BC%80PowerShell%E9%94%AE%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%91%BD%E4%BB%A4%E7%A1%AE%E4%BF%9Dssh-agent%E6%9C%8D%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8"><span class="nav-number">3.</span> <span class="nav-text">在Window10(1809+)下首先使用管理员身份打开PowerShell键入以下命令确保ssh-agent服务自动启动</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -320,21 +332,21 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
         <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -366,7 +378,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Owen</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
@@ -414,6 +426,19 @@
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : '[object Object]',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   
